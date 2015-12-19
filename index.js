@@ -25,9 +25,9 @@
   }
   function update(route,oknp) {
     switch (route) {
-      case '/posts': update_posts(posts); break;
-      case '/about': update_about(about); break;
-      case '/404': update_404(_404); break;
+      case '/posts': update_posts(oknp.posts); break;
+      case '/about': update_about(oknp.about); break;
+      case '/404': update_404(oknp._404); break;
       default: break;
     }
   }
@@ -35,15 +35,12 @@
     var post_template_route = 'views/post.html';
     $.get(post_template_route,function on_post_template_route_response(post_template) {
       var posts_html = '';
-      for (var p in posts) {
-        posts_html += parse_and_bind_post(post_template,posts[p])
+      for (var p in posts_data) {
+        posts_html += bind_post(post_template,posts[p]);
+        $('.post.title',post_template).html(post_data.title);
+        $('.post.body',post_template).html(post_data.body);
       }
       $('#posts').html(posts_html);
     });
-  }
-  function parse_and_bind_post(post_template,post_data) {
-    template = template.replace('{{post.title}}',post_data.title)
-    template = template.replace('{{post.body}}',post_data.body)
-    return template;
   }
 })(jQuery);
