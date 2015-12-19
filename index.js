@@ -31,9 +31,19 @@
       default: break;
     }
   }
-  function update_posts(posts) {
-    for (var p in posts) {
-      
-    }
+  function update_posts(posts_data) {
+    var post_template_route = 'views/post.html';
+    $.get(post_template_route,function on_post_template_route_response(post_template) {
+      var posts_html = '';
+      for (var p in posts) {
+        posts_html += parse_and_bind_post(post_template,posts[p])
+      }
+      $('#posts').html(posts_html);
+    });
+  }
+  function parse_and_bind_post(post_template,post_data) {
+    template = template.replace('{{post.title}}',post_data.title)
+    template = template.replace('{{post.body}}',post_data.body)
+    return template;
   }
 })(jQuery);
