@@ -25,9 +25,9 @@
   }
   function update(route,oknp) {
     switch (route) {
-      '/posts': update_posts(posts); break;
-      '/about': update_about(about); break;
-      '/404': update_404(_404); break;
+      case '/posts': update_posts(posts); break;
+      case '/about': update_about(about); break;
+      case '/404': update_404(_404); break;
       default: break;
     }
   }
