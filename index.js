@@ -46,8 +46,8 @@
       var doms = '';
       for (var p in posts_data) {
         var dom_tree = post_template;
-        $('.post.title',dom_tree).html(posts_data[p].title);
-        $('.post.body',dom_tree).html(posts_data[p].body);
+        $('.post.title',dom_tree).text(posts_data[p].title);
+        $('.post.body',dom_tree).text(posts_data[p].body);
         doms += dom_tree;
       }
       $('#posts').append(doms);
