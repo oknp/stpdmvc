@@ -1,1 +1,9 @@
+#routes {
+  list-style: none;
+  margin-bottom: 0;
+  display: flex;
+}
 
+#routes li {
+  margin-right:15px;
+}
