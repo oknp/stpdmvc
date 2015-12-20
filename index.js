@@ -43,12 +43,14 @@
   function update_posts(posts_data) {
     var post_template_route = 'views/post.html';
     $.get(post_template_route,function on_post_template_route_response(post_template) {
-      console.log(post_template);
+      var doms = '';
       for (var p in posts_data) {
-        $('.post.title',post_template).html(posts_data[p].title);
-        $('.post.body',post_template).html(posts_data[p].body);
+        var dom_tree = post_template;
+        $('.post.title',dom_tree).html(posts_data[p].title);
+        $('.post.body',dom_tree).html(posts_data[p].body);
+        doms += dom_tree;
       }
-      $('#posts').html(posts_html);
+      $('#posts').append(doms);
     });
   }
 })(jQuery);
