@@ -45,8 +45,8 @@
     $.get(post_template_route,function on_post_template_route_response(post_template) {
       console.log(post_template);
       for (var p in posts_data) {
-        $('.post.title',post_template).html(post_data.title);
-        $('.post.body',post_template).html(post_data.body);
+        $('.post.title',post_template).html(posts_data[p].title);
+        $('.post.body',post_template).html(posts_data[p].body);
       }
       $('#posts').html(posts_html);
     });
